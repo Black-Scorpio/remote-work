@@ -18,7 +18,18 @@ This Flask web application allows users to manage a list of cafes, including vie
 
 ## Installation
 
-1. **Clone the repository:**
+1. **Clone & Run:**
    ```bash
-   git clone https://github.com/yourusername/cafe-management-app.git
-   cd cafe-management-app
+   git clone https://github.com/Black-Scorpio/remote-work
+   cd remote-work
+   
+   python -m venv venv
+   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+   
+   pip install -r requirements.txt
+
+   python main.py
+   
+   Open your web browser and navigate to:
+   http://127.0.0.1:5000
+
