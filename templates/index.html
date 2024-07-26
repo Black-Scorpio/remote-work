@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}All Cafes{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Cafes</h1>
+    <a class="btn btn-primary mb-4" href="{{ url_for('add_cafe') }}">Add New Cafe</a>
+    <form method="get" action="{{ url_for('home') }}" class="mb-4">
+        <div class="form-group">
+            <label for="filter">Filter by Location:</label>
+            <input type="text" class="form-control" id="filter" name="filter" placeholder="Enter location">
+        </div>
+        <button type="submit" class="btn btn-secondary">Apply Filter</button>
+    </form>
+    <ul class="list-group">
+        {% for cafe in cafes %}
+            <li class="list-group-item">
+                <h4>{{ cafe.name }}</h4>
+                <p><strong>Location:</strong> {{ cafe.location }}</p>
+                <p><strong>Seats:</strong> {{ cafe.seats }}</p>
+                <p><strong>Toilet:</strong> {{ cafe.has_toilet }}</p>
+                <p><strong>WiFi:</strong> {{ cafe.has_wifi }}</p>
+                <p><strong>Sockets:</strong> {{ cafe.has_sockets }}</p>
+                <p><strong>Calls:</strong> {{ cafe.can_take_calls }}</p>
+                <p><strong>Price:</strong> {{ cafe.coffee_price }}</p>
+                <form action="{{ url_for('delete_cafe', cafe_id=cafe.id) }}" method="post">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
